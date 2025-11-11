@@ -1,0 +1,33 @@
+import { Module } from '@nestjs/common';
+{% if config.orm === 'mongoose' %}
+import { MongooseModule } from '@nestjs/mongoose';
+{% endif %}
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+{% if ir.models and ir.models.length > 0 %}
+{% for model in ir.models %}
+import { {{ model.name }}Module } from './{{ model.fileName }}/{{ model.fileName }}.module';
+{% endfor %}
+{% endif %}
+
+@Module({
+  imports: [
+    {% if config.orm === 'mongoose' %}
+    MongooseModule.forRoot(
+      {% if config.connectionMode === 'URL' %}
+      process.env.DATABASE_URL || '{{ config.dbURL }}',
+      {% else %}
+      'mongodb://localhost:27017/{{ config.projectName }}',
+      {% endif %}
+    ),
+    {% endif %}
+    {% if ir.models and ir.models.length > 0 %}
+    {% for model in ir.models %}
+    {{ model.name }}Module,
+    {% endfor %}
+    {% endif %}
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}

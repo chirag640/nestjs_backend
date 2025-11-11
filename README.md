@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextGen - Project Generator Platform
 
-## Getting Started
+A full-stack code-generation platform that generates runnable NestJS skeletons based on user configuration through a NextJS 15 (App Router) wizard UI.
 
-First, run the development server:
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Next.js](https://img.shields.io/badge/Next.js-16.0.1-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+
+## 🚀 Features
+
+- **Interactive Wizard UI** - Multi-step form with live validation
+- **Dark Theme** - Modern, sleek UI matching the NextGen design system
+- **Real-time Validation** - Zod schemas with React Hook Form
+- **Code Generation** - Nunjucks templates with Prettier formatting
+- **ZIP Download** - Instant download of generated project
+- **CI/CD Ready** - GitHub Actions workflow included
+
+## 🛠️ Technology Stack
+
+- **Frontend**: Next.js 15 (App Router), TypeScript, Tailwind CSS
+- **Forms**: React Hook Form + Zod validation
+- **Backend**: Next.js API Routes
+- **Templates**: Nunjucks
+- **Formatting**: Prettier
+- **Packaging**: JSZip
+- **Testing**: Vitest
+- **CI/CD**: GitHub Actions
+
+## 📦 Installation
+
+```bash
+npm install
+```
+
+## 🚦 Getting Started
+
+1. **Start the development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Open your browser:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Follow the wizard:**
+   - **Step 1**: Configure project details (name, author, license, etc.)
+   - **Step 2**: Configure database settings (ORM, provider, connection)
 
-## Learn More
+4. **Generate & Download:**
 
-To learn more about Next.js, take a look at the following resources:
+Click "Generate Project" to download your NestJS skeleton as a ZIP file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Run all tests
+npm test
 
-## Deploy on Vercel
+# Type checking
+npm run typecheck
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Linting
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 Scripts
+
+| Script              | Description               |
+| ------------------- | ------------------------- |
+| `npm run dev`       | Start development server  |
+| `npm run build`     | Build for production      |
+| `npm start`         | Start production server   |
+| `npm run lint`      | Run ESLint                |
+| `npm run format`    | Format code with Prettier |
+| `npm test`          | Run Vitest tests          |
+| `npm run typecheck` | TypeScript type checking  |
+
+## 🚀 Deployment
+
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## 📄 License
+
+MIT License
+
+---
+
+**Built with ❤️ using Next.js 15 and TypeScript**

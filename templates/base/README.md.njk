@@ -1,0 +1,51 @@
+# {{ projectName }}
+
+{{ description }}
+
+## Description
+
+This project was generated using NextGen - a NestJS project generator.
+
+## Installation
+
+```bash
+$ {{ pkgManager }} install
+```
+
+## Running the app
+
+```bash
+# development
+$ {{ pkgManager }} run start
+
+# watch mode
+$ {{ pkgManager }} run start:dev
+
+# production mode
+$ {{ pkgManager }} run start:prod
+```
+
+## Build
+
+```bash
+$ {{ pkgManager }} run build
+```
+
+## Project Information
+
+- **Author:** {{ author }}
+- **License:** {{ license }}
+- **Node Version:** {{ nodeVersion }}
+
+## Database Configuration
+
+- **ORM:** {{ orm }}
+- **Provider:** {{ provider }}
+{% if connectionMode === 'URL' and dbURL %}
+- **Connection URL:** `{{ dbURL }}`
+{% endif %}
+- **Auto-migration:** {{ autoMigrate }}
+
+## Support
+
+For support, please open an issue in the project repository.

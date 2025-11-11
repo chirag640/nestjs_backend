@@ -1,0 +1,29 @@
+import { Schema, Types } from 'mongoose';
+
+{% if model.timestamps %}
+const schemaOptions = { timestamps: true };
+{% else %}
+const schemaOptions = {};
+{% endif %}
+
+export const {{ model.fileName }}Schema = new Schema({
+{% for field in model.fields %}
+  {{ field.name }}: {
+    type: {{ field.mongooseType }},
+    {% if field.required %}required: true,{% endif %}
+    {% if field.unique %}unique: true,{% endif %}
+    {% if field.index %}index: true,{% endif %}
+    {% if field.defaultValue !== undefined and field.defaultValue !== null %}default: {{ field.defaultValue | dump }},{% endif %}
+  },
+{% endfor %}
+}, schemaOptions);
+
+export interface {{ model.name }}Document {
+{% for field in model.fields %}
+  {{ field.name }}: {{ field.tsType }};
+{% endfor %}
+{% if model.timestamps %}
+  createdAt?: Date;
+  updatedAt?: Date;
+{% endif %}
+}

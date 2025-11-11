@@ -1,0 +1,33 @@
+import {
+  IsString,
+  IsNumber,
+  IsBoolean,
+  IsDate,
+  IsMongoId,
+  IsOptional,
+  IsArray,
+} from 'class-validator';
+
+export class Create{{ model.name }}Dto {
+{% for field in model.fields %}
+  {% if field.required %}
+  {% if field.tsType == 'string' %}@IsString(){% endif %}
+  {% if field.tsType == 'number' %}@IsNumber(){% endif %}
+  {% if field.tsType == 'boolean' %}@IsBoolean(){% endif %}
+  {% if field.tsType == 'Date' %}@IsDate(){% endif %}
+  {% if field.tsType == 'Types.ObjectId' %}@IsMongoId(){% endif %}
+  {% if field.tsType == 'string[]' %}@IsArray() @IsString({ each: true }){% endif %}
+  {{ field.name }}: {{ field.tsType }};
+  {% else %}
+  @IsOptional()
+  {% if field.tsType == 'string' %}@IsString(){% endif %}
+  {% if field.tsType == 'number' %}@IsNumber(){% endif %}
+  {% if field.tsType == 'boolean' %}@IsBoolean(){% endif %}
+  {% if field.tsType == 'Date' %}@IsDate(){% endif %}
+  {% if field.tsType == 'Types.ObjectId' %}@IsMongoId(){% endif %}
+  {% if field.tsType == 'string[]' %}@IsArray() @IsString({ each: true }){% endif %}
+  {{ field.name }}?: {{ field.tsType }};
+  {% endif %}
+
+{% endfor %}
+}

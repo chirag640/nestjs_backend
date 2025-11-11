@@ -1,26 +1,45 @@
 {
-  "name": "nestjs_backend",
-  "version": "0.1.0",
+  "name": "nextgen-generator",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.553.0",
+    "next": "16.0.1",
+    "nunjucks": "^3.2.4",
+    "prettier": "^3.6.2",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "react-hook-form": "^7.66.0",
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
+    "@types/jszip": "^3.4.0",
     "@types/node": "^20",
+    "@types/nunjucks": "^3.2.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "@vitejs/plugin-react": "^5.1.0",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1"
+    "eslint-config-next": "16.0.1",
+    "jsdom": "^27.1.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "^4.0.8"
   }
 }

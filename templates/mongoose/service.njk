@@ -1,0 +1,41 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { {{ model.name }}Repository } from './{{ model.fileName }}.repository';
+import { Create{{ model.name }}Dto } from './dto/create-{{ model.fileName }}.dto';
+import { Update{{ model.name }}Dto } from './dto/update-{{ model.fileName }}.dto';
+
+@Injectable()
+export class {{ model.name }}Service {
+  constructor(private readonly repo: {{ model.name }}Repository) {}
+
+  async create(dto: Create{{ model.name }}Dto) {
+    return this.repo.create(dto as any);
+  }
+
+  async findAll() {
+    return this.repo.findAll();
+  }
+
+  async findOne(id: string) {
+    const entity = await this.repo.findById(id);
+    if (!entity) {
+      throw new NotFoundException(`{{ model.name }} with ID ${id} not found`);
+    }
+    return entity;
+  }
+
+  async update(id: string, dto: Update{{ model.name }}Dto) {
+    const entity = await this.repo.update(id, dto as any);
+    if (!entity) {
+      throw new NotFoundException(`{{ model.name }} with ID ${id} not found`);
+    }
+    return entity;
+  }
+
+  async remove(id: string) {
+    const entity = await this.repo.remove(id);
+    if (!entity) {
+      throw new NotFoundException(`{{ model.name }} with ID ${id} not found`);
+    }
+    return entity;
+  }
+}

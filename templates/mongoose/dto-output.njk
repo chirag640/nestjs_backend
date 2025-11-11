@@ -1,0 +1,10 @@
+export class {{ model.name }}OutputDto {
+  id: string;
+{% for field in model.fields %}
+  readonly {{ field.name }}: {{ field.tsType }};
+{% endfor %}
+{% if model.timestamps %}
+  readonly createdAt?: Date;
+  readonly updatedAt?: Date;
+{% endif %}
+}
